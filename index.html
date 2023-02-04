@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Apartement by Wilan</title>
+  <title>Booking Apartement [2BR] Pemandangan Kota dengan Suasana Romantis by Wilan</title>
   <meta content="Apartement booking info by Wilan" name="description">
   <meta content="apartement" name="keywords">
 
@@ -24,6 +24,8 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.21.1/daterangepicker.min.css" integrity="sha512-nmvKZG8E3dANbZAsJXpdK6IqpfEXbPNbpe3M3Us1qTipq74IpTRShbpCf8lJFapB7e0MkDbNDKxLjS1VWt2vVg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Template Main CSS File -->
@@ -33,6 +35,11 @@
   .easepick-wrapper{
 	align-content: center;
 	display: grid;
+  }
+  @media only screen and (max-width: 600px) {
+	  .gallery-secondary{
+		width: 10.3rem;
+	  }
   }
   </style>
 
@@ -45,26 +52,33 @@
 </head>
 
 <body>
-
-  <!-- ======= Mobile nav toggle button ======= -->
-  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
-  <i class="bi bi-list mobile-nav-toggle d-lg-none d-none"></i>
-
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
 	  <div style="background-color:#fff5;padding: 1rem;border-radius: 1rem;">
-		  <h1>Host by Wilan</h1>
+		  <h2>Booking</h2>
+		  <h3 class="text-start"><strong>Apartement Pemandangan Kota Dengan Suasana Romantis</strong></h3>
+		  <ul class="text-start" style="list-style-type: none;padding:0;margin:0;">
+			<li>
+			<small><i class="bx bx-user"></i> Host by Wilan</small>
+			</li>
+		  <li>
+			<small><i class="bx bx-map"></i> Kecamatan Lengkong, Kota Bandung, Jawa Barat, Indonesia</small>
+		  </li>
+		  <li>
+			<small><i class="bx bx-closet"></i> 2 kamar tidur &bullet; 3 tempat tidur &bullet; 1 kamar mandi</small>
+		  </li>
+		 </ul>
+		  <!--
 		  <p>
-			Booking Apartement Manual
+			<h5 style="text-align:justify-content-center;">Bagi anda yang kesulitan untuk melakukan transaksi pada Airbnb, kami memberikan pilihan untuk melakukan booking</h5>
 		  </p>
-		  <p>
-			<h5 style="text-align:justify-content-center;">Bagi anda yang kesulitan untuk melakukan transaksi pada Airbnb, kami memberikan pilihan untuk melakukan booking secara manual</h5>
-		  </p>
+		  -->
 	  </div>
 	  <br/>
       <nav id="navbar" class="navbar nav-menu">
       <ul>
+		<li><a href="#unit-info" class="nav-link scrollto"><i class="bx bx-detail"></i> <span>Informasi unit sewaan</span></a></li>
         <li><a href="#terms-conditions" class="nav-link scrollto"><i class="bx bx-info-circle"></i> <span>Syarat & Ketentuan</span></a></li>
         <li><a href="#booking" class="nav-link scrollto"><i class="bx bx-book-bookmark"></i> <span>Booking</span></a></li>
       </ul>
@@ -73,14 +87,126 @@
   </section><!-- End Hero -->
 
   <main id="main">
+	
+	<!-- ======= Unit Info Section ======= -->
+    <section id="unit-info" class="unit-info">
+      <div class="container" data-aos="fade-up">
 
-    <!-- ======= Terms & Condition Section ======= -->
+        <div class="section-title">
+          <h2>Informasi unit sewaan</h2>
+          <p>Kamar yang damai dan berlokasi di pusat kota Bandung</p>
+        </div>
+
+        <div class="row mb-3">
+			<div class="col-md-4"
+			  <a data-fancybox="gallery" href="assets/img/gallery/01.webp">
+				<img class="gallery-main rounded img-fluid mt-1" src="assets/img/gallery/01.webp" style="height: 19rem;"/>
+			  </a>
+			</div>
+			<div class="col justify-content-center text-center">
+			  <a data-fancybox="gallery" href="assets/img/gallery/02.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/02.webp" />
+			  </a>
+			  <a data-fancybox="gallery" href="assets/img/gallery/03.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/03.webp" />
+			  </a>
+			  <a data-fancybox="gallery" href="assets/img/gallery/04.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/04.webp" />
+			  </a>
+			  <a data-fancybox="gallery" href="assets/img/gallery/05.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/05.webp" />
+			  </a>
+			  <a data-fancybox="gallery" href="assets/img/gallery/06.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/06.webp" />
+			  </a>
+			  <a data-fancybox="gallery" href="assets/img/gallery/07.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/07.webp" />
+			  </a>
+			  <a data-fancybox="gallery" href="assets/img/gallery/08.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/08.webp" />
+			  </a>
+			  <a data-fancybox="gallery" href="assets/img/gallery/09.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/09.webp" />
+			  </a>
+			  <a data-fancybox="gallery" href="assets/img/gallery/10.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/10.webp" />
+			  </a>
+			  <a data-fancybox="gallery" href="assets/img/gallery/11.webp">
+				<img class="gallery-secondary rounded img-fluid mt-1" src="assets/img/gallery/thumbnail/11.webp" />
+			  </a>
+		    </div>
+		</div>
+		
+		<div class="row">
+			<h3>Fasilitas unit sewaan</h3>
+		</div>
+		
+		<div class="row">
+			<div class="col-6">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Dapur</li>
+					<li class="list-group-item">Perlengkapan dasar memasak<br><small class="text-muted">Panci dan wajan, minyak, garam dan merica</small></li>
+					<li class="list-group-item">Piring dan perangkat makan<br><small class="text-muted">Mangkuk, sumpit, piring, cangkir, dll.</small></li>
+					<li class="list-group-item">Penanak nasi</li>
+					<li class="list-group-item">Kompor gas</li>
+					<li class="list-group-item">Microwave</li>
+					<li class="list-group-item">Kulkas</li>
+					<li class="list-group-item">Seprai</li>
+					<li class="list-group-item">Gorden peneduh ruangan</li>
+					<li class="list-group-item">Buku dan bahan bacaan</li>
+					<li class="list-group-item">Alarm asap</li>
+					<li class="list-group-item">Peralatan P3K</li>
+				</ul>
+			</div>
+			<div class="col-6">
+				<ul class="list-group list-group-flush">
+				<li class="list-group-item">Wifi</li>
+				<li class="list-group-item">AC - tipe split sistem ductless</li>
+				<li class="list-group-item">HDTV 32" dengan Disney+, Netflix</li>
+				<li class="list-group-item">Kebutuhan dasar<br><small class="text-muted">Handuk, seprai, sabun, dan tisu toilet</small></li>
+				<li class="list-group-item">Pengering rambut</li>
+				<li class="list-group-item">Sabun mandi cair</li>
+				<li class="list-group-item">Gantungan baju</li>
+				<li class="list-group-item">Setrika</li>
+				<li class="list-group-item">Kolam renang Bersama</li>
+				<li class="list-group-item">Water Heater</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="row pt-3 pb-3">
+			<h3>Lokasi unit sewaan</h3>
+		</div>
+		
+		<div class="row">
+			<div class="col-12">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2643.463890667123!2d107.61625873410809!3d-6.923964722626122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e62b95dc5b1d%3A0x8ec43b8608b85235!2sJl.%20Karapitan%20No.1%2C%20Paledang%2C%20Kec.%20Lengkong%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040261!5e0!3m2!1sen!2sid!4v1675485495899!5m2!1sen!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">&bullet; Lengkong Street Food Market sangat dekat sekali, cocok dengan berjalan kaki.</li>
+
+					<li class="list-group-item">&bullet; Alun-alun Kota Bandung berjarak 2.1 KM, sekitar 9 menit degan berkendara.</li>
+
+					<li class="list-group-item">&bullet; BIP Mall berjarak 2.9 KM, sekitar 12 menit dengan berkendara.</li>
+
+					<li class="list-group-item">&bullet; Trans Studio Bandung berjarak 3.1 KM, sekitar 15 menit dengan berkendara.</li>
+				</ul>
+			</div>
+		</div>
+		
+      </div>
+    </section><!-- End Unit Info Section -->
+	
+	<!-- ======= Terms & Condition Section ======= -->
     <section id="terms-conditions" class="terms-conditions">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
           <h2>Syarat & Ketentuan</h2>
-          <p style="text-align:left;">Berikut beberapa syarat dan ketentuan yang dibutuhkan untuk melakukan booking manual.</p>
+          <p style="text-align:left;">Berikut beberapa syarat dan ketentuan yang dibutuhkan untuk melakukan booking.</p>
 		  <br/>
 		  <ul style="text-align:left;">
               <li>Biaya booking mengikuti Airbnb dalam USD (Dolar Amerika Serikat) dan dikonversikan ke IDR (Indonesia Rupiah) mengikuti kurs pada saat booking dilakukan</li>
@@ -160,6 +286,7 @@
 
   <!-- Vendor JS Files -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
   
   <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.0/dist/index.umd.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -281,19 +408,35 @@
 						<div class="col-md-12 text-center">
 							<h5><span class="badge" style="background-color:#912e6d;">${nights} malam</span></h5>
 						</div>
-						<div class="col-12 text-left">
+						<div class="col-12 text-start">
 							<div class="row">
 								<div class="col-12 mt-1">
-									<h6>
-										<span class="badge bg-success me-3">Check-In</span>
-										${toIndonesia(start)['hari']}, ${toIndonesia(start)['tanggal']} ${toIndonesia(start)['bulan']} ${toIndonesia(start)['tahun']}
-									</h6>
+										<div class="row">
+											<div class="row">
+												<div class="col-2"></div>
+												<div class="col-3 text-start">
+													<span class="badge bg-success">Check-In</span>
+												</div>
+												<div class="col text-start">
+													<small>${toIndonesia(start)['hari']}, ${toIndonesia(start)['tanggal']} ${toIndonesia(start)['bulan']} ${toIndonesia(start)['tahun']}</small>
+												</div>
+											</div>
+										</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-12 mt-1 mb-3">
-									<span class="badge bg-warning me-1">Check-Out</span>
-									${toIndonesia(end)['hari']}, ${toIndonesia(end)['tanggal']} ${toIndonesia(end)['bulan']} ${toIndonesia(end)['tahun']}
+									<div class="row">
+											<div class="row">
+												<div class="col-2"></div>
+												<div class="col-3 text-start">
+													<span class="badge bg-primary">Check-Out</span>
+												</div>
+												<div class="col text-start">
+													<small>${toIndonesia(end)['hari']}, ${toIndonesia(end)['tanggal']} ${toIndonesia(end)['bulan']} ${toIndonesia(end)['tahun']}</small>
+												</div>
+											</div>
+									</div>
 								</div>
 							</div>
 						</div>
