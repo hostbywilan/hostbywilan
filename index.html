@@ -305,6 +305,7 @@
   <script src="assets/js/main.js"></script>
  
  <script>
+		let globalPicker;
 	  const toIdn = function(date){
 			let returnDate = [];
 			returnDate['tahun'] = date.getFullYear();
@@ -505,10 +506,21 @@
 									picker.clear();
 								}
 							});
+							console.log($(e.explicitOriginalTarget));
+							$(e.explicitOriginalTarget).click( function(){
+								picker.clear();
+							});
 						});
+						
 						picker.on('clear', (e) => {
 							$("#datepicker").html(`<div class="col-md-12 form-group text-center"><h5>Pilih Tanggal Booking</h5></div>`);
 							picker.resetCheckin();
+						});
+						
+						$("body").on('click', (e) => {
+							if( !$(e.target).is(picker.ui.wrapper) ){
+								picker.resetCheckin();
+							}
 						});
 					  }
 				  });
