@@ -462,6 +462,9 @@
 								<div>
 						  </div>
 						  `);
+						   $("#datepicker").data("datecheckin", start);
+						   $("#datepicker").data("datecheckout", end);
+						   $("#datepicker").data("totalnight", nights);
 						  
 						  
 							
@@ -506,7 +509,7 @@
 									picker.clear();
 								}
 							});
-							console.log($(e.explicitOriginalTarget));
+
 							$(e.explicitOriginalTarget).click( function(){
 								picker.clear();
 							});
@@ -514,13 +517,10 @@
 						
 						picker.on('clear', (e) => {
 							$("#datepicker").html(`<div class="col-md-12 form-group text-center"><h5>Pilih Tanggal Booking</h5></div>`);
+							$("#datepicker").removeData("datecheckin");
+						    $("#datepicker").removeData("datecheckout");
+						    $("#datepicker").removeData("totalnight");
 							picker.resetCheckin();
-						});
-						
-						$("body").on('click', (e) => {
-							if( !$(e.target).is(picker.ui.wrapper) ){
-								picker.resetCheckin();
-							}
 						});
 					  }
 				  });
