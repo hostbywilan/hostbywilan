@@ -39,3 +39,10 @@ const toIdn = function(date){
 	
 	return returnDate;
 }
+
+function ymdDate(theDate){
+  theDate.toISOString().split('T')[0];
+  const offset = theDate.getTimezoneOffset();
+  theDate = new Date(theDate.getTime() - (offset*60*1000));
+  return theDate.toISOString().split('T')[0];
+}
