@@ -26,6 +26,20 @@ function isFormBookingReady(){
 	}
 }
 
+function disableSubmitBooking(){
+		$(".booking-form").each(function(){
+			$(this).attr("disabled", true);
+		});
+		$(this).attr("disabled", true);
+}
+
+function enableSubmitBooking(){
+		$(".booking-form").each(function(){
+			$(this).attr("disabled", false);
+		});
+		$(this).attr("disabled", false);
+}
+
 $(function() {
 	isFormBookingReady();
 	
@@ -283,8 +297,7 @@ $(function() {
 	
 	$("#submit-booking").on("click", function(e){
 		e.preventDefault;
-		console.log(e);
-		console.log($("#datepicker").data());
+		disableSubmitBooking();
 		var settings = {
 		  "url": "https://script.google.com/macros/s/AKfycbynwtAJvZqvIlWOLAyIEK41eGPoGHrZsSpNFH7Df1kfzPJlShARiZ2-nEKvWAPDLsoP-w/exec?action=submitBooking",
 		  "method": "POST",
@@ -294,8 +307,6 @@ $(function() {
 		  },
 		  "data": $("#datepicker").data()
 		};
-		
-		console.log(settings);
 
 		if(isFormBookingReady()){
 			$.ajax(settings).done(function (rsp) {
@@ -307,6 +318,10 @@ $(function() {
 						html: rsp.statusText,
 						confirmButtonColor: '#991188'
 					});
+					picker.clear();
+					$(".booking-form").each(function(){
+						$(this).val("");
+					});
 				}else{
 					Swal.fire({
 						icon: 'error',
@@ -315,6 +330,8 @@ $(function() {
 						confirmButtonColor: '#991188'
 					});
 				}
+				
+				enableSubmitBooking();
 			});
 		}else{
 			Swal.fire({
@@ -323,6 +340,8 @@ $(function() {
 				text: 'Silahkan lengkapi data, dan pastikan data valid',
 				confirmButtonColor: '#991188'
 			});
+			
+			enableSubmitBooking()
 		}
 	});
 });

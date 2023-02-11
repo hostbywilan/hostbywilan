@@ -236,32 +236,27 @@
           </div>
 		  
           <div class="col-lg-4 mt-1 mt-lg-0">
-
-            <div class="row justify-content-center">
-			    <div id="datepicker" class="form-group mt-1 text-center justify-content-center">
-					<div class="col-md-12 form-group text-center">
-					  <h5>Pilih Tanggal Booking</h5>
+			<div id="formulir-booking">
+				<div class="row justify-content-center">
+					<div id="datepicker" class="form-group mt-1 text-center justify-content-center">
+						<div class="col-md-12 form-group text-center">
+						  <h5>Pilih Tanggal Booking</h5>
+						</div>
 					</div>
-                </div>
-              </div>
-			  <div class="row mt-3">
-			  <div class="col-md-6 form-group">
-                <input type="text" name="guestName" class="form-control booking-form" id="guest-name" placeholder="Nama" required>
-              </div>
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="phone" class="form-control booking-form" name="guestPhone" id="guest-phone" placeholder="Nomor Whatsapp" required>
-              </div>
-            </div>
-            <div class="form-group mt-3">
-              <textarea class="form-control booking-form" id="guest-message" name="guestMessage" rows="5" placeholder="Pesan untuk Host (optional)"></textarea>
-            </div>
-            <div class="mt-3 d-none">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="mt-3 text-center"><button id="submit-booking" class="btn btn-primary btn-main" disabled>Kirim permintaan booking</button></div>
-
+				  </div>
+				  <div class="row mt-3">
+				  <div class="col-md-6 form-group">
+					<input type="text" name="guestName" class="form-control booking-form" id="guest-name" placeholder="Nama" required>
+				  </div>
+				  <div class="col-md-6 form-group mt-3 mt-md-0">
+					<input type="phone" class="form-control booking-form" name="guestPhone" id="guest-phone" placeholder="Nomor Whatsapp" required>
+				  </div>
+				</div>
+				<div class="form-group mt-3">
+				  <textarea class="form-control booking-form" id="guest-message" name="guestMessage" rows="5" placeholder="Pesan untuk Host (optional)"></textarea>
+				</div>
+				<div class="mt-3 text-center"><button id="submit-booking" class="btn btn-primary btn-main" disabled>Kirim permintaan booking</button></div>
+			</div>
           </div>
 		  
 		  <div class="col-lg-4 d-xs-none">
@@ -298,7 +293,7 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src=" https://cdn.jsdelivr.net/npm/libphonenumber-js@1.10.19/bundle/libphonenumber-js.min.js "></script>
 
   <!-- Template Main JS File -->
