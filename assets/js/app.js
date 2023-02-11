@@ -1,7 +1,7 @@
 let dateAvailability,globalPicker;
 
 function isFormBookingReady(){
-	isFormReadyForBooking = false;
+	isEmptyData = [];
 	
 	[
 		"dateCheckIn",
@@ -13,16 +13,22 @@ function isFormBookingReady(){
 		"guestPhone"
 	].forEach(function(v,i){
 		if(typeof $("#datepicker").data(v) == "undefined"){
-			$("submit-booking").prop("disabled", true);
-			return false;
+			isEmptyData.push(v);
 		}
-		
-		$("submit-booking").prop("disabled", false);
-		return true;
 	});
+	
+	if(isEmptyData.length>0){
+		$("#submit-booking").attr("disabled", true);
+		return false;
+	}else{
+		$("#submit-booking").attr("disabled", false);
+		return true;
+	}
 }
 
 $(function() {
+	isFormBookingReady();
+	
 	$.get("https://script.google.com/macros/s/AKfycbynwtAJvZqvIlWOLAyIEK41eGPoGHrZsSpNFH7Df1kfzPJlShARiZ2-nEKvWAPDLsoP-w/exec?action=getAvailability", function(res, stat){
 		if(res.statusCode == 1 && stat == 'success'){
 			dateAvailability = res.dateAvailability;
@@ -100,17 +106,28 @@ $(function() {
 						$.get(`https://script.google.com/macros/s/AKfycbynwtAJvZqvIlWOLAyIEK41eGPoGHrZsSpNFH7Df1kfzPJlShARiZ2-nEKvWAPDLsoP-w/exec?action=getPrices&startDate=${ymdDate(start)}&endDate=${ymdDate(end)}`, function(res, stat){
 							if(stat == 'success'){
 								let prices = res.prices,
-								priceDisplayIDR = prices.IDR.priceItems[0].total.amountFormatted.split(',')[0].replace('Rp', 'Rp '),
-								priceDisplayUSD = prices.USD.priceItems[0].total.amountFormatted,
-								priceIDR = Number(prices.IDR.priceItems[0].total.amountFormatted.split(',')[0].replace(/[^0-9]+/g,"")),
-								priceUSD = Number(prices.USD.priceItems[0].total.amountFormatted.split(',')[0].replace(/[^0-9.-]+/g,""));
+								priceDisplayIDR = prices.IDR.toLocaleString('id-ID', {
+								  style: 'currency',
+								  currency: 'IDR',
+								}),
+								priceDisplayUSD = prices.USD.toLocaleString('en-US', {
+								  style: 'currency',
+								  currency: 'USD',
+								}),
+								priceIDR = prices.IDR,
+								priceDisplayIDRperNights = (prices.IDR/nights).toLocaleString('id-ID', {
+								  style: 'currency',
+								  currency: 'IDR',
+								}),
+								priceUSD = prices.USD,
+								priceDisplayUSDperNights = (prices.USD/nights).toLocaleString('en-US', {
+								  style: 'currency',
+								  currency: 'USD',
+								});
 								
 								$("#datepicker").html(`
 								<div class="col-md-12 form-group text-center">
 									<div class="row">
-										<div class="col-md-12 text-center">
-											<h5><span class="badge" style="background-color:#912e6d;">${nights} malam</span></h5>
-										</div>
 										<div class="col-12 text-start">
 											<div class="row">
 												<div class="col-12 mt-1">
@@ -143,14 +160,17 @@ $(function() {
 												</div>
 											</div>
 										</div>
-										<div class="col-md-12 text-center mt-1">
-											<span class="badge" style="background-color:#912e6d;">Total</span>
+										<div class="col-md-12 text-center">
+											<small>${priceDisplayIDRperNights} / malam</small><br/>
+											<sup class="text-muted">${priceDisplayUSDperNights} / malam</sup><br/>
+											<span class="badge" style="background-color:#912e6d;">X ${nights} malam</span>
 										</div>
 										<div class="col-md-12 text-center mt-1">
-											${priceDisplayIDR}
+											<h5><span class="badge" style="background-color:#912e6d;">Total</span></h5>
+											${priceDisplayIDR}<br/>
 										</div>
 										<div class="col-md-12 text-center mb-3">
-											<small class="text-muted">(${priceDisplayUSD})</small><br>
+											<small class="text-muted">(${priceDisplayUSD})</small><br/>
 											<sup class="text-muted">(Belum termasuk deposit Rp 500.000)</sup>
 										</div>
 										<div class="col-md-12 text-center mt-1 mb-3">
@@ -165,8 +185,16 @@ $(function() {
 								$("#datepicker").data("totalPricesUSD", priceUSD);
 								$("#datepicker").data("totalPricesIDR", priceIDR);
 								if($("#guest-name").val()) $("#datepicker").data("guestName", $("#guest-name").val());
-								if($("#guest-phone").val()) $("#datepicker").data("guestPhone", $("#guest-phone").val());
+								if($("#guest-phone").val()){
+									if(libphonenumber.isValidNumber($("#guest-phone").val(), 'ID')){
+										$("#datepicker").data("guestPhone", $("#guest-phone").val());
+									}else{
+										$("#datepicker").removeData("guestPhone");
+									}
+								}
 								if($("#guest-message").val()) $("#datepicker").data("guestMessage", $("guest-message").val());
+								
+								isFormBookingReady();
 						  
 								$("#reservation-reset").click(function() {
 									picker.clear();
@@ -217,13 +245,14 @@ $(function() {
 						});
 					});
 					
-					picker.on('clear', (e) => {
+					picker.on('clear', (e) => {				
 						$("#datepicker").html(`<div class="col-md-12 form-group text-center"><h5>Pilih Tanggal Booking</h5></div>`);
 						$("#datepicker").removeData("dateCheckIn");
 					    $("#datepicker").removeData("dateCheckOut");
 					    $("#datepicker").removeData("totalNights");
 					    $("#datepicker").removeData("totalPricesUSD");
 					    $("#datepicker").removeData("totalPricesIDR");
+						isFormBookingReady();
 						picker.resetDateAvailability();
 					});
 				}
@@ -231,5 +260,69 @@ $(function() {
 			  
 			globalPicker = picker;
 		}
-	});	
+	});
+	
+	$(".booking-form").each(function(){
+		$(this).on("keyup change oninput", function(){
+			if($(this).val()){
+				if($(this).attr("name") == "guestPhone"){
+					if(libphonenumber.isValidNumber($(this).val(), 'ID')){
+						$("#datepicker").data($(this).attr("name"), $(this).val());
+					}else{
+						$("#datepicker").removeData($(this).attr("name"));
+					}
+				}else{
+					$("#datepicker").data($(this).attr("name"), $(this).val());
+				}
+			}else{
+				$("#datepicker").removeData($(this).attr("name"));
+			}
+			isFormBookingReady();
+		});
+	});
+	
+	$("#submit-booking").on("click", function(e){
+		e.preventDefault;
+		console.log(e);
+		console.log($("#datepicker").data());
+		var settings = {
+		  "url": "https://script.google.com/macros/s/AKfycbynwtAJvZqvIlWOLAyIEK41eGPoGHrZsSpNFH7Df1kfzPJlShARiZ2-nEKvWAPDLsoP-w/exec?action=submitBooking",
+		  "method": "POST",
+		  "timeout": 0,
+		  "headers": {
+			"Content-Type": "application/x-www-form-urlencoded"
+		  },
+		  "data": $("#datepicker").data()
+		};
+		
+		console.log(settings);
+
+		if(isFormBookingReady()){
+			$.ajax(settings).done(function (rsp) {
+				if(rsp.statusCode == 1){
+					Swal.fire({
+						icon: 'success',
+						iconColor: '#991188',
+						title: '',
+						html: rsp.statusText,
+						confirmButtonColor: '#991188'
+					});
+				}else{
+					Swal.fire({
+						icon: 'error',
+						title: 'Oops...',
+						text: rsp.statusText,
+						confirmButtonColor: '#991188'
+					});
+				}
+			});
+		}else{
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Silahkan lengkapi data, dan pastikan data valid',
+				confirmButtonColor: '#991188'
+			});
+		}
+	});
 });

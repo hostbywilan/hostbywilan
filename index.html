@@ -208,16 +208,16 @@
 
         <div class="section-title">
           <h2>Syarat & Ketentuan</h2>
-          <p style="text-align:left;">Berikut beberapa syarat dan ketentuan yang dibutuhkan untuk melakukan booking.</p>
+          <p class="text-start">Berikut beberapa syarat dan ketentuan yang dibutuhkan untuk melakukan booking.</p>
 		  <br/>
-		  <ul style="text-align:left;">
+		  <ul class="text-start">
               <li>Biaya booking mengikuti Airbnb dalam USD (Dolar Amerika Serikat) dan dikonversikan ke IDR (Indonesia Rupiah) mengikuti kurs pada saat booking dilakukan</li>
               <li>Penyewa diwajibkan melakukan deposit sebesar Rp 500.000,-</li>
               <li>Penyewa diwajibkan memberikan KTP saat melakukan Check-In</li>
               <li>Deposit dan KTP akan dikembalikan ke penyewa pada saat Check-Out</li>
           </ul>
 		  <br/>
-		  <p style="text-align:left;">Jika anda setuju dengan semua persyaratan dan ketentuan tersebut, silahkan isi <a href="#booking" class="scrollto">formulir booking</a></p>
+		  <p class="text-start">Jika anda setuju dengan semua persyaratan dan ketentuan tersebut, silahkan isi <a href="#booking" class="scrollto">formulir booking</a></p>
         </div>
 
       </div>
@@ -237,8 +237,7 @@
 		  
           <div class="col-lg-4 mt-1 mt-lg-0">
 
-            <form action="forms/contact.php" method="post" role="form">
-              <div class="row justify-content-center">
+            <div class="row justify-content-center">
 			    <div id="datepicker" class="form-group mt-1 text-center justify-content-center">
 					<div class="col-md-12 form-group text-center">
 					  <h5>Pilih Tanggal Booking</h5>
@@ -246,23 +245,22 @@
                 </div>
               </div>
 			  <div class="row mt-3">
-				<div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="guest-name" placeholder="Nama" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="phone" class="form-control" name="phone" id="guest-phone" placeholder="Nomor Whatsapp" required>
-                </div>
+			  <div class="col-md-6 form-group">
+                <input type="text" name="guestName" class="form-control booking-form" id="guest-name" placeholder="Nama" required>
               </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" id="guest-message" name="message" rows="5" placeholder="Catatan" required></textarea>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="phone" class="form-control booking-form" name="guestPhone" id="guest-phone" placeholder="Nomor Whatsapp" required>
               </div>
-              <div class="mt-3 d-none">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="mt-3 text-center"><button id="submit-booking" class="btn btn-primary" style="background-color:#912e6d;border-color:#8f1763;">Kirim permintaan booking</button></div>
-            </form>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control booking-form" id="guest-message" name="guestMessage" rows="5" placeholder="Pesan untuk Host (optional)"></textarea>
+            </div>
+            <div class="mt-3 d-none">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="mt-3 text-center"><button id="submit-booking" class="btn btn-primary btn-main" disabled>Kirim permintaan booking</button></div>
 
           </div>
 		  
@@ -300,7 +298,8 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src=" https://cdn.jsdelivr.net/npm/libphonenumber-js@1.10.19/bundle/libphonenumber-js.min.js "></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
