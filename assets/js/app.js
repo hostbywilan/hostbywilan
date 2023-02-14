@@ -30,14 +30,18 @@ function disableSubmitBooking(){
 		$(".booking-form").each(function(){
 			$(this).attr("disabled", true);
 		});
-		$(this).attr("disabled", true);
+		$("#submit-booking").attr("disabled", true);
+		$("#formulir-booking").addClass("d-none"); 
+		$("#formulir-booking-loader").removeClass("d-none"); 
 }
 
 function enableSubmitBooking(){
 		$(".booking-form").each(function(){
 			$(this).attr("disabled", false);
 		});
-		$(this).attr("disabled", false);
+		$("#submit-booking").attr("disabled", false);
+		$("#formulir-booking").removeClass("d-none"); 
+		$("#formulir-booking-loader").addClass("d-none"); 
 }
 
 $(function() {
@@ -298,6 +302,7 @@ $(function() {
 	$("#submit-booking").on("click", function(e){
 		e.preventDefault;
 		disableSubmitBooking();
+		$("#formulir-booking").addClass("d-none"); 
 		var settings = {
 		  "url": "https://script.google.com/macros/s/AKfycbynwtAJvZqvIlWOLAyIEK41eGPoGHrZsSpNFH7Df1kfzPJlShARiZ2-nEKvWAPDLsoP-w/exec?action=submitBooking",
 		  "method": "POST",
@@ -318,7 +323,7 @@ $(function() {
 						html: rsp.statusText,
 						confirmButtonColor: '#991188'
 					});
-					picker.clear();
+					globalPicker.clear();
 					$(".booking-form").each(function(){
 						$(this).val("");
 					});
