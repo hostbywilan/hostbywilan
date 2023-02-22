@@ -301,7 +301,6 @@ $(function() {
 	
 	$("#submit-booking").on("click", function(e){
 		e.preventDefault;
-		disableSubmitBooking();
 		$("#formulir-booking").addClass("d-none"); 
 		var settings = {
 		  "url": "https://script.google.com/macros/s/AKfycbynwtAJvZqvIlWOLAyIEK41eGPoGHrZsSpNFH7Df1kfzPJlShARiZ2-nEKvWAPDLsoP-w/exec?action=submitBooking",
@@ -314,6 +313,7 @@ $(function() {
 		};
 
 		if(isFormBookingReady()){
+			disableSubmitBooking();
 			$.ajax(settings).done(function (rsp) {
 				if(rsp.statusCode == 1){
 					Swal.fire({
