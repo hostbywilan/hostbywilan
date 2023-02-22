@@ -337,6 +337,7 @@ $(function() {
 				}
 				
 				enableSubmitBooking();
+				isFormBookingReady();
 			});
 		}else{
 			Swal.fire({
@@ -346,7 +347,8 @@ $(function() {
 				confirmButtonColor: '#991188'
 			});
 			
-			enableSubmitBooking()
+			enableSubmitBooking();
+			isFormBookingReady();
 		}
 	});
 });
